@@ -1,0 +1,19 @@
+<div class="theme_LK">
+    <div>
+        <label for="text" class="text_LK">TEXT</label>
+        <input type="color" name="text" id="text" [value]="colorTextDay" (change)="changeColor( 'TEXT', $event )">
+    </div>
+    <div>
+        <label for="btn" class="text_LK">BUTTON</label>
+        <input type="color" name="btn" id="btn" [value]="colorBtnDay" (change)="changeColor( 'BUTTON', $event )">
+    </div>
+    <div>
+        <label for="btn_text" class="text_LK">BUTTON TEXT</label>
+        <input type="color" name="btn_text" id="btn_text" [value]="colorBtnTextDay" (change)="changeColor( 'BUTTON_TEXT', $event )">
+    </div>
+    <div>
+        <label for="theme" class="text_LK">THEME</label>
+        <input type="color" name="theme" id="theme" [value]="colorThemeDay" (change)="changeColor( 'THEME', $event )">
+    </div>
+    <button class="btn_LK neon__btn" (click)="saveColor()"> Save</button>
+</div>

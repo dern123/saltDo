@@ -1,0 +1,5 @@
+<aside class="menu">
+  <ul>
+    <li routerLink="/{{item.url}}" tabindex="{{i}}" *ngFor="let item of menuModuleAdmin; let i = index" class="menu__item {{item.choiceItem}}" (click)="clickChoiceMenu(i, menuModuleAdmin)">{{item.name}}</li>
+  </ul>
+</aside>

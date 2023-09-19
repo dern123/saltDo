@@ -1,0 +1,32 @@
+.btn_LK{
+  background-color: var(--color-btn);
+}
+.theme_LK{
+  background-color: var(--color-theme);
+}
+.text_LK{
+  color: var(--color-text);
+}
+.neon__btn{
+  display: inline-block;
+  padding: 12px 40px;
+  margin-top: 10px;
+  background-image: linear-gradient(to right, 
+  rgb(18, 194, 233),
+  rgb(196, 113, 237),
+  rgb(246, 79, 89)
+  );
+  color: var(--color-btn-text);
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+.neon__btn:hover{
+  animation: grow 2s linear infinite;
+}
+
+@keyframes grow{
+  0%{box-shadow: 5px 5px 20px rgb(93,52,168), -5px -5px 20px rgb(93,52,168);}
+  50%{box-shadow: 5px 5px 20px rgb(81,224,210), -5px -5px 20px rgb(81,224,210);}
+  100%{box-shadow: 5px 5px 20px rgb(93,52,168), -5px -5px 20px rgb(93,52,168);}
+}

@@ -1,0 +1,8 @@
+[
+    {
+        "id": 1,
+        "name": "accountant",
+        "active": false,
+        "path": "./server/modules/example/index.js"
+    }
+]
