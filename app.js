@@ -32,7 +32,10 @@ app.use(compression())
 app.use(corsConfig)
 app.use(cors())
 app.use(cookieParser())
-
+app.get("/",(req,res) => {
+  res.redirect("/home")
+})
+app.use(express.static(__dirname + '/client/src'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json({ extendet: true }));
 

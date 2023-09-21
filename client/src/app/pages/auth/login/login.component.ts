@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private router: Router) {
 
   }
 
@@ -25,6 +26,17 @@ export class LoginComponent implements OnInit {
     this.loginService.login(login, password )
     .subscribe((data: any)=> {
       console.log("🚀 ~ file: signup.component.ts:38 ~ SignupComponent ~ .subscribe ~ data:", data)
+      if(data.data.permissions){
+        if (!!data.data.permissions.permissions.client.access) {
+
+          if (data.data.permissions.permissions.client.access) {
+            this.router.navigate(['/client'])
+          } 
+        }
+        if (data.data.permissions.permissions.admin.access) {
+          this.router.navigate(['/admin'])
+        }
+      }
     })
   }
   

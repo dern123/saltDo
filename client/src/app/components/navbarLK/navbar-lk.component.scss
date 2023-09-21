@@ -1,0 +1,19 @@
+.menu__item{
+    display: block;
+    width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 20px;
+    background-color: transparent;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all ease-out .2s;
+}
+.menu ul{
+    margin-top: 50px;
+}
+.menu__item.menu__item-choice,
+.menu__item:hover{
+    color: var(--color-btn-text);
+    background-color: var(--color-btn);
+}

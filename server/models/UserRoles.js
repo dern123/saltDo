@@ -187,22 +187,22 @@ const schema = new Schema({
                 //         read: {type: Boolean, default: false}
                 //     }
                 // },
-                // "system-settings":{
-                //     access:{type: Boolean, default: false},
-                //     action: {
-                //         create: {type: Boolean, default: false},
-                //         update: {type: Boolean, default: false},
-                //         read: {type: Boolean, default: false}
-                //     }
-                // },
-                // system:{
-                //     access:{type: Boolean, default: false},
-                //     action: {
-                //         create: {type: Boolean, default: false},
-                //         update: {type: Boolean, default: false},
-                //         read: {type: Boolean, default: false}
-                //     }
-                // },
+                "system-settings":{
+                    access:{type: Boolean, default: false},
+                    action: {
+                        create: {type: Boolean, default: false},
+                        update: {type: Boolean, default: false},
+                        read: {type: Boolean, default: false}
+                    }
+                },
+                system:{
+                    access:{type: Boolean, default: false},
+                    action: {
+                        create: {type: Boolean, default: false},
+                        update: {type: Boolean, default: false},
+                        read: {type: Boolean, default: false}
+                    }
+                },
                 // importLeads:{
                 //     access:{type: Boolean, default: false},
                 //     action: {
@@ -410,6 +410,22 @@ const schema = new Schema({
                     //         read: {type: Boolean, default: false}
                     //     }
                     // }
+                    "system-settings":{
+                        access:{type: Boolean, default: false},
+                        action: {
+                            create: {type: Boolean, default: false},
+                            update: {type: Boolean, default: false},
+                            read: {type: Boolean, default: false}
+                        }
+                    },
+                    system:{
+                        access:{type: Boolean, default: false},
+                        action: {
+                            create: {type: Boolean, default: false},
+                            update: {type: Boolean, default: false},
+                            read: {type: Boolean, default: false}
+                        }
+                    }
                 },
             },
         }
