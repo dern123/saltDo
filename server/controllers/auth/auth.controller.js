@@ -103,7 +103,7 @@ exports.login = async(req, res) => {
             return handler.errorMessage(res, "notFound");
         }
 
-        const token = jwt.sign({userId: user._id, role: user.userRoleId.name}, config.get("JWR_TOKEN"))
+        const token = jwt.sign({userId: user._id, role: user.userRoleId.name, teamIds: user.teamIds}, config.get("JWR_TOKEN"))
         const permissions = await UserRolesModel.findById(user.userRoleId).select(
             "permissions"
         );
@@ -111,7 +111,8 @@ exports.login = async(req, res) => {
         req.session.user = {
             id: user._id,
             login: user.login,
-            permissions: permissions.permissions,  
+            permissions: permissions.permissions,
+            teamIds: user.teamIds  
         }
 
         return handler.positiveResponse(res, { token, permissions, userInfo: { login: user.login} }, req);

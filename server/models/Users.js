@@ -18,9 +18,14 @@ const schema = new Schema({
     country:        {type: String},
     gender:         {type: String},
     telegram:       {type: String},
+    teamIds:         [{
+        teamId:           {type: Types.ObjectId, ref: "Teams"},
+        accepted:         {type: Boolean, default: false},
+        createdAt:        {type: Date, default: new Date()},
+    }],
     imgServerPath:  {type: String, trim: true, default: ""},
     acceptEmail:    {type: Boolean, required: true, default: false},
-    trackerUrl:           {type: String, default: null}
+    trackerUrl:     {type: String, default: null}
 }, { timestamps: true });
 
 schema.plugin(autoIncrement.plugin, { model: 'Users', field: 'id' });
