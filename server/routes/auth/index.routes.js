@@ -1,5 +1,5 @@
 module.exports = { 
     configure(app) {
-        app.use("/api/auth", require("./auth.routes"))
+        app.use("/api/auth", require("./auth.routes"));
     }
 }
