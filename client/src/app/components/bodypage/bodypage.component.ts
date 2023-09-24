@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-bodypage',
@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bodypage.component.scss']
 })
 export class BodypageComponent implements OnInit {
-
   constructor() { }
+  @Input() headingPageShow: boolean = true;
+  @Input() headingPage: string = "";
 
   ngOnInit(): void {
   }
