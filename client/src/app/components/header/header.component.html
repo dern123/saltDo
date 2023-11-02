@@ -8,7 +8,8 @@
         <app-sidebar></app-sidebar>
     </div>
     <div>
-        <a routerLink="/auth/login" href="/auth/login" class="header__btn">Login</a>
-        <a routerLink="/auth/signup" href="/auth/signup" class="header__btn">Signup</a>
+        <a *ngIf="!user_login" routerLink="/auth/login" href="/auth/login" class="header__btn">Login</a>
+        <a *ngIf="!user_login" routerLink="/auth/signup" href="/auth/signup" class="header__btn">Signup</a>
+        <a routerLink="/client" href="/client" *ngIf="user_login" class="header__btn">Return</a>
     </div>
 </header>

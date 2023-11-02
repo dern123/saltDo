@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { iconsAdmin } from './sidebarIcons';
+import { PermissionService } from 'src/app/services/permissionService/permission.service';
+import { iconsAdmin } from './navbarIcons';
+import { iconsClient } from './navbarIcons';
 interface MenuItem {
   name: string;
   url: string;
@@ -16,16 +18,49 @@ interface MenuItem {
 })
 export class NavbarLKComponent implements OnInit {
 
-  constructor() { }
+  constructor(private permissionService: PermissionService) {
+    this.access = this.permissionService.getLocalSession();
+   }
   public menuModuleAdmin: MenuItem[] = [];
+  public menuModuleClient: MenuItem[] = [];
+  
+  public access: any;
+  public adminAccess: boolean = false;
+  public clientAccess: boolean = false;
+
   getMenuItems() {
-    const menuModules: any = [];
-    iconsAdmin.forEach((item:any) => {
-      if(item.menuName == 'dashboard' || item.menuName == 'system'){
-        menuModules.push({ name: item.name, url: item.menuName, menuName: item.menuName, icon: item.icon, items:[], choiceItem:''})
-      }
-    })
-    this.menuModuleAdmin = menuModules
+    if(this.access.admin?.access){
+      this.adminAccess = true;
+      const ModuleKey: any = Object.keys(this.access.admin.modules);
+      const ModuleValue: any = Object.values(this.access.admin.modules);
+      const menuModules: any = [];
+      ModuleKey.forEach((key: any, index: number) => {
+        if (ModuleValue[index].access) {
+          key
+          let iconSvg = iconsAdmin[key];
+          if( iconSvg != undefined){
+            menuModules.push({ name: iconSvg.name, url: iconSvg.menuName, menuName: iconSvg.menuName, icon: iconSvg.icon, items:[], choiceItem:''})
+          }
+        }
+      })
+      this.menuModuleAdmin = menuModules;
+    }
+    if(this.access.client?.access){
+      console.log("this.access", this.access)
+      this.clientAccess = true;
+      const ModuleKey: any = Object.keys(this.access.client.modules);
+      const ModuleValue: any = Object.values(this.access.client.modules);
+      const menuModules: any = [];
+      ModuleKey.forEach((key: any, index: number) => {
+        if (ModuleValue[index].access) {
+          let iconSvg = iconsClient[key];
+          if( iconSvg != undefined){
+            menuModules.push({ name: iconSvg.name, url: iconSvg.menuName, menuName: iconSvg.menuName, icon: iconSvg.icon, items:[], choiceItem:''})
+          }
+        }
+      })
+      this.menuModuleClient = menuModules;
+    }
   }
 
   ngOnInit(): void {

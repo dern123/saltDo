@@ -9,22 +9,6 @@ module.exports = {
           admin:{
               access: false,
               modules:{
-                //   offers:{
-                //       access: false,
-                //       action: {
-                //           create:  false,
-                //           update: false,
-                //           read: false
-                //       }
-                //   },
-                //   streams:{
-                //       access:  false,
-                //       action: {
-                //           create: false,
-                //           update: false,
-                //           read:   false
-                //       }
-                //   },
                   users:{
                       access: false,
                       action: {
@@ -45,27 +29,24 @@ module.exports = {
           },
           client:{
               access: true,
-              client: {
+              modules:{
+                dashboard:{
                   access: true,
-                  modules:{
-                    //   offers:{
-                    //       access: true,
-                    //       action: {
-                    //           create:  true,
-                    //           update: true,
-                    //           read: true
-                    //       }
-                    //   },
-                    //   streams:{
-                    //       access: false,
-                    //       action: {
-                    //           create: true,
-                    //           update: true,
-                    //           read: true
-                    //       }
-                    //   },
-                  }
+                  action: {
+                    create: false,
+                    update: false,
+                    read: false
+                }
               },
+              todo:{
+                access: true,
+                action: {
+                  create: false,
+                  update: false,
+                  read: false
+                }
+              }
+            }
           }
         }
         },
@@ -75,22 +56,6 @@ module.exports = {
           admin:{
               access: true,
               modules:{
-                //   offers:{
-                //       access: true,
-                //       action: {
-                //           create:  true,
-                //           update: true,
-                //           read: true
-                //       }
-                //   },
-                //   streams:{
-                //       access:  true,
-                //       action: {
-                //           create: true,
-                //           update: true,
-                //           read:   true
-                //       }
-                //   },
                   users:{
                       access: true,
                       action: {
@@ -111,27 +76,25 @@ module.exports = {
           },
           client:{
               access: true,
-              client: {
-                  access: true,
-                  modules:{
-                    //   offers:{
-                    //       access: true,
-                    //       action: {
-                    //           create:  true,
-                    //           update: true,
-                    //           read: true
-                    //       }
-                    //   },
-                    //   streams:{
-                    //       access: true,
-                    //       action: {
-                    //           create: true,
-                    //           update: true,
-                    //           read:true
-                    //       }
-                    //   },
+                access: true,
+                modules:{
+                  dashboard:{
+                    access: true,
+                    action: {
+                      create: false,
+                      update: false,
+                      read: false
                   }
-              },
+                },
+                todo:{
+                  access: true,
+                  action: {
+                    create: false,
+                    update: false,
+                    read: false
+                  }
+                }
+              }
           }
         }
         }

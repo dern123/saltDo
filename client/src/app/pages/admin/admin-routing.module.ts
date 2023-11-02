@@ -14,6 +14,10 @@ const routes: Routes = [
       path: 'system', canActivate: [AuthGuard, PermissionGuard],
       loadChildren: () => import("../../pages/system/system.module").then((m) => m.SystemModule)
     },
+    {
+      path: 'todo', canActivate: [AuthGuard, PermissionGuard],
+      loadChildren: () => import("./todo/todo.module").then((m) => m.TodoModule)
+    },
     { path: '', redirectTo: 'dashboard', pathMatch: "full" },
   ]}
 ];

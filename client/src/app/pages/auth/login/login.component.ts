@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router,
+    private route: ActivatedRoute) {
 
   }
 
@@ -25,15 +26,17 @@ export class LoginComponent implements OnInit {
     const {login, password} = this.formLogin.value;
     this.loginService.login(login, password )
     .subscribe((data: any)=> {
-      console.log("🚀 ~ file: signup.component.ts:38 ~ SignupComponent ~ .subscribe ~ data:", data)
       if(data.data.permissions){
-        if (!!data.data.permissions.permissions.client.access) {
-
-          if (data.data.permissions.permissions.client.access) {
-            this.router.navigate(['/client'])
-          } 
+        if (data.data.permissions.permissions.client.access 
+          && data.data.permissions.permissions.admin.access) {
+            this.router.navigate(['/admin'])
         }
-        if (data.data.permissions.permissions.admin.access) {
+        if (data.data.permissions.permissions.client.access 
+          && !data.data.permissions.permissions.admin.access) {
+          this.router.navigate(['/client'])
+        }
+        if (data.data.permissions.permissions.admin.access
+          && data.data.permissions.permissions.client.access) {
           this.router.navigate(['/admin'])
         }
       }
@@ -41,5 +44,6 @@ export class LoginComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    
   }
 }

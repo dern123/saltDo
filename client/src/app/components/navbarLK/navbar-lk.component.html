@@ -1,4 +1,5 @@
 <aside class="menu">
+  <div *ngIf="adminAccess">
     <ul>
       <li 
       tabindex="{{i}}" 
@@ -6,8 +7,20 @@
       class="menu__item {{item.choiceItem}}" 
       (click)="clickChoiceMenu(i, menuModuleAdmin)"
       >
-      <a routerLink="{{item.url}}" >{{item.name}}</a>
-      
-    </li>
+        <a routerLink="/admin/{{item.url}}" >{{item.name}}</a>
+      </li>
     </ul>
+  </div>
+  <div *ngIf="clientAccess">
+    <ul>
+      <li 
+      tabindex="{{i}}" 
+      *ngFor="let item of menuModuleClient; let i = index" 
+      class="menu__item {{item.choiceItem}}" 
+      (click)="clickChoiceMenu(i, menuModuleClient)"
+      >
+        <a routerLink="/client/{{item.url}}" >{{item.name}}</a>
+      </li>
+    </ul>
+  </div>
   </aside>
